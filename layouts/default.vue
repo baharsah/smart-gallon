@@ -69,7 +69,7 @@ export default {
       miniVariant: false,
       right: false,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Smart Gallon'
     }
   }
 }

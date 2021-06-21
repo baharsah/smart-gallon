@@ -14,7 +14,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - SmartGallon',
-    title: 'SmartGallon',
+    title: 'smart-gallon',
     htmlAttrs: {
       lang: 'en'
     },
@@ -47,13 +47,30 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyBIcKN84z4Qtjt2N50vocPpVnlCiwXCMM8",
+          authDomain: "smart-gallon.firebaseapp.com",
+          databaseURL: "https://smart-gallon-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "smart-gallon",
+          storageBucket: "smart-gallon.appspot.com",
+          messagingSenderId: "212616565107",
+          appId: "1:212616565107:web:a6e80e4a46a93a18d6f506"
+        },
+        services: {
+          database: true,
+        }
+      }
+    ]
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,
@@ -70,5 +87,5 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
 }
