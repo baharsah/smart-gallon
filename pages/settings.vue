@@ -56,10 +56,12 @@ export default {
     }
   },
   mounted() {
+<<<<<<< HEAD
     this.fetchDb();
+=======
+    this.fetchDb()
+>>>>>>> ab02c684c8bf6ceb1742cc4374cfb849a197a671
     this.switchNotifikasi = false;
-    this.gallon = 2000;
-    this.batasNotif = 500;
   },
   watch: {
     gallon(val) {
