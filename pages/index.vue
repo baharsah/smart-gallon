@@ -27,9 +27,9 @@
           depressed
           large
           rounded
-          color="primary"
+          :color="button ? 'secondary' : 'primary'"
         >
-          Ambil Air
+          {{ button ? 'Sedang ambil Air' : 'Ambil Air' }}
         </v-btn>
         <br>
 
@@ -77,7 +77,6 @@ export default {
     return {
       nambah: 0,
       consumed: 0,
-      interval:false,
       relay: 0,
       flowSensor: 0,
       gallon: 2000,
@@ -87,15 +86,15 @@ export default {
         relay: null,
         flowSensor: null,
         button: null,
-        gallon: null
-      }
+        gallon: null,
+        batasNotif: null,
+      },
+      devMode: true,
+      intervalDev: null,
     }
   },
   mounted(){   // program di dalam mounted dijalankan pertama saat load web
     this.fetchDb();
-    this.consumed = 0;
-    this.flowSensor = 0;
-    this.gallon = 2000;
   },
   watch:{     // memantau perubahan value dari relay
     relay(val) {
@@ -129,7 +128,10 @@ export default {
     },
     refGallon() {
       return this.$fire.database.ref().ref.child('gallon')
-    }
+    },
+    refBatasNotif() {
+      return this.$fire.database.ref().ref.child('batasNotif')
+    },
   },
   methods: {
     fetchDb(){
@@ -148,27 +150,61 @@ export default {
       this.refGallon.on('value', (dataSnapshot) => {
         this.db.gallon = dataSnapshot.val()
       })
+      this.refBatasNotif.on('value', (dataSnapshot) => {
+        this.db.batasNotif = dataSnapshot.val()
+      })
     },
   	start(){
-      this.nambah = 0
-    	if(!this.interval){
-      	this.interval = setInterval(() => {
-          this.relay = 1, 30
-          this.flowSensor = this.db.flowSensor, 30
-          this.button = true
-        })	
+      if(this.devMode){
+        let _this = this;
+        this.intervalDev = setInterval(() =>{
+          if(_this.gallon <= 1){
+            clearInterval(this.intervalDev)
+          }
+          _this.gallon -= 1
+        }, 100)
       }
+      this.nambah = 0
+      this.relay = 1
+      this.flowSensor = this.db.flowSensor
+      this.button = true
     },
     stop() {
+      if(this.devMode){
+        clearInterval(this.intervalDev)
+      }
+      if(this.gallon <= this.db.batasNotif){
+        this.notification(`Maaf, gallon anda tersisa ${this.gallon}`);
+      }
       this.nambah = this.db.flowSensor
       this.gallon -= this.nambah
       this.consumed += this.db.flowSensor
-    	clearInterval(this.interval)
-      this.interval = false
       this.flowSensor = 0
       this.relay = 0
       this.button = false
     },
+
+    notification(message){
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+      }
+
+      // Let's check whether notification permissions have already been granted
+      else if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification(message);
+      }
+
+      // Otherwise, we need to ask the user for permission
+      else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(function (permission) {
+          // If the user accepts, let's create a notification
+          if (permission === "granted") {
+            var notification = new Notification(message);
+          }
+        });
+      }
+    }
   }
 }
 </script>
