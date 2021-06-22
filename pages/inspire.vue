@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col class="text-center">
+    <v-col class="text-center index">
       <v-progress-circular
         :rotate="-90"
         :size="200"
@@ -12,8 +12,8 @@
         <!-- <h1>{{consumed * 100 / 2000}}%</h1> -->
         <h1>96%</h1>
       </v-progress-circular>
-      <h2>Hari ini anda minum 2 Liter air</h2>
-      <h3>Kebutuhan anda sudah mencukupi!</h3>
+      <h2 class="text-grey">Hari ini anda minum <span class="text-blue">2 Liter</span> air</h2>
+      <h3 class="text-grey">Kebutuhan anda <span class="text-blue">sudah mencukupi</span>!</h3>
     </v-col>
   </v-row>
 </template>
@@ -22,6 +22,15 @@
 .consume-progress {
   margin-top: 8vh;
   margin-bottom: 5vh;
+}
+.index {
+  padding: 5vw
+}
+.text-grey {
+  color: #9E9E9E;
+}
+.text-blue {
+  color: #47B9FF;
 }
 </style>
 <script>

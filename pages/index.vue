@@ -1,18 +1,19 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <v-img
-          class="img-gallon"
-          aspect-ratio="1"
-          max-height="250"
-          contain
-          :src="require('~/assets/gallon.jpg')"
-        ></v-img>
-        <h2>{{ db.gallon * 100 / 2000 }} %</h2>
-        <h1>Sisa air Galon: {{db.gallon}}</h1>
-        <h3>Sudah minum sebanyak {{db.consumed}} mililiter</h3>
-        <p>Tekan tahan tombol <b>Ambil</b> untuk mengambil air</p>
+      <div class="text-center index">
+        <div class="img-gallon">
+          <v-img
+            aspect-ratio="1"
+            max-height="250"
+            contain
+            :src="require('~/assets/gallon.jpg')"
+          ></v-img>
+          <h1 class="img-gallon-text">{{ db.gallon * 100 / 2000 }} %</h1>
+        </div>
+        <h1 class="text-grey">Sisa air Galon: {{db.gallon}}</h1>
+        <h3 class="text-grey">Sudah minum sebanyak {{db.consumed}} mililiter</h3>
+        <p class="text-grey">Tekan tahan tombol <b class="text-blue">AMBIL AIR</b> untuk mengambil air</p>
         <p>db flowSensor : {{db.flowSensor}}</p>
         <p>nambah berapa: {{nambah}}</p>
         <!-- <h1>Relay: {{relay}}</h1> -->
@@ -35,6 +36,27 @@
     </v-col>
   </v-row>
 </template>
+
+<style>
+.index {
+  padding: 5vw
+}
+.img-gallon {
+  position: relative;
+}
+.img-gallon-text {
+  position:absolute;
+  top: 50%;
+  left: 38%;
+  color: #fff;
+}
+.text-grey {
+  color: #9E9E9E;
+}
+.text-blue {
+  color: #47B9FF;
+}
+</style>
 
 <script>
 import Logo from '~/components/Logo.vue'

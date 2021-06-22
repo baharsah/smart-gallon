@@ -38,7 +38,7 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="title" color="white" />
       <v-spacer />
     </v-app-bar>
     <v-main>
