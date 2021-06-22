@@ -56,11 +56,7 @@ export default {
     }
   },
   mounted() {
-<<<<<<< HEAD
     this.fetchDb();
-=======
-    this.fetchDb()
->>>>>>> ab02c684c8bf6ceb1742cc4374cfb849a197a671
     this.switchNotifikasi = false;
   },
   watch: {
