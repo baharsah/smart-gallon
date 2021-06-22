@@ -3,14 +3,16 @@
     <v-col cols="12" sm="8" md="6">
       <div class="text-center">
         <v-img
+          class="img-gallon"
           aspect-ratio="1"
-          lazy-src="https://picsum.photos/id/11/10/6"
-          max-height="150"
-          max-width="250"
+          max-height="250"
+          contain
           :src="require('~/assets/gallon.jpg')"
         ></v-img>
-        <h1>Sisa air Galon: {{gallon}}</h1>
+        <h2>{{ db.gallon * 100 / 2000 }} %</h2>
+        <h1>Sisa air Galon: {{db.gallon}}</h1>
         <h3>Sudah minum sebanyak {{db.consumed}} mililiter</h3>
+        <p>Tekan tahan tombol <b>Ambil</b> untuk mengambil air</p>
         <p>db flowSensor : {{db.flowSensor}}</p>
         <p>nambah berapa: {{nambah}}</p>
         <!-- <h1>Relay: {{relay}}</h1> -->
@@ -64,6 +66,8 @@ export default {
   mounted(){   // program di dalam mounted dijalankan pertama saat load web
     this.fetchDb();
     this.consumed = 0;
+    this.flowSensor = 0;
+    this.gallon = 2000;
   },
   watch:{     // memantau perubahan value dari relay
     relay(val) {

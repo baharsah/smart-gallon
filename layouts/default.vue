@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -7,6 +7,13 @@
       fixed
       app
     >
+      <div class="account">
+        <v-avatar size="40">
+          <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
+        </v-avatar>
+        <h3>Nabilla M M</h3>
+        <p>nmauludina@gmail.com</p>
+      </div>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -25,6 +32,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
+      color="primary"
       :clipped-left="clipped"
       fixed
       app
@@ -42,10 +50,16 @@
       :absolute="!fixed"
       app
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>&copy; Miran4 {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
+
+<style>
+.account {
+  padding: 16px;
+}
+</style>
 
 <script>
 export default {
@@ -67,8 +81,7 @@ export default {
         }
       ],
       miniVariant: false,
-      right: false,
-      rightDrawer: false,
+      right: true,
       title: 'Smart Gallon'
     }
   }
