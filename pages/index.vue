@@ -88,6 +88,7 @@ export default {
         button: null,
         gallon: null,
         batasNotif: null,
+        notifikasi: null,
       },
     }
   },
@@ -130,6 +131,9 @@ export default {
     refBatasNotif() {
       return this.$fire.database.ref().ref.child('batasNotif')
     },
+    refnotifikasi() {
+      return this.$fire.database.ref().ref.child('notifikasi')
+    }
   },
   methods: {
     fetchDb(){
@@ -150,6 +154,9 @@ export default {
       })
       this.refBatasNotif.on('value', (dataSnapshot) => {
         this.db.batasNotif = dataSnapshot.val()
+      })
+      this.refnotifikasi.on('value', (dataSnapshot) => {
+        this.db.notifikasi = dataSnapshot.val()
       })
     },
     start(){
@@ -172,7 +179,7 @@ export default {
       this.relay = 0
       this.button = false
 
-      if(this.gallon <= this.db.batasNotif){
+      if(this.gallon <= this.db.batasNotif && this.db.notifikasi){
         this.notification(`sisa air galon anda ${galon} milimeter`)
       }
     },

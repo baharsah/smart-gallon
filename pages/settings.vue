@@ -6,7 +6,7 @@
       </v-col>
       <v-col cols="8">
         <v-text-field
-          v-model="db.gallon"
+          v-model="gallon"
           type="number"
           min="0"
           max="19000"
@@ -35,8 +35,8 @@
       </v-col>
       <v-col cols="8">
         <v-switch
-          v-model="switchNotifikasi"
-          :label="`${switchNotifikasi ? 'Aktif' : 'Mati'}`"
+          v-model="notifikasi"
+          :label="`${notifikasi ? 'Aktif' : 'Mati'}`"
         ></v-switch>
       </v-col>
     </v-row>
@@ -47,11 +47,10 @@
 export default {
   data() {
     return {
-      switchNotifikasi: !this.switchNotifikasi,
-      gallon: 0,
-      batasNotif: 500,
       db: {
-        gallon: null
+        gallon: null,
+        batasNotif: null,
+        notifikasi: null,
       }
     }
   },
@@ -59,20 +58,39 @@ export default {
     this.fetchDb();
     this.switchNotifikasi = false;
   },
-  watch: {
-    gallon(val) {
-      this.refGallon.set(val)
-    },
-    batasNotif(val) {
-      this.refBatasNotif.set(val)
-    }
-  },
   computed:{
+    gallon: {
+      set(val){
+        this.refGallon.set(val)
+      },
+      get(){
+        return this.db.gallon
+      }
+    },
+    batasNotif: {
+      set(val){
+        this.refBatasNotif.set(val)
+      },
+      get(){
+        return this.db.batasNotif
+      }
+    },
+    notifikasi:{
+      set(val){
+        this.refnotifikasi.set(val)
+      },
+      get(){
+        return this.db.notifikasi
+      }
+    },
     refGallon() {
       return this.$fire.database.ref().ref.child('gallon')
     },
     refBatasNotif() {
       return this.$fire.database.ref().ref.child('batasNotif')
+    },
+    refnotifikasi() {
+      return this.$fire.database.ref().ref.child('notifikasi')
     }
   },
   methods: {
@@ -82,6 +100,9 @@ export default {
       }),
       this.refBatasNotif.on('value', (dataSnapshot) => {
         this.db.batasNotif = dataSnapshot.val()
+      })
+      this.refnotifikasi.on('value', (dataSnapshot) => {
+        this.db.notifikasi = dataSnapshot.val()
       })
     }
   }
