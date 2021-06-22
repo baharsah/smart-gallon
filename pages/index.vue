@@ -179,8 +179,8 @@ export default {
       this.relay = 0
       this.button = false
 
-      if(this.gallon <= this.db.batasNotif && this.db.notifikasi){
-        this.notification(`sisa air galon anda ${galon} milimeter`)
+      if(this.gallon <= this.db.batasNotif){
+        this.notification(`sisa air galon anda ${this.gallon} milimeter`)
       }
     },
 
