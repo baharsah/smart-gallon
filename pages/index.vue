@@ -9,7 +9,7 @@
           max-width="250"
           :src="require('~/assets/gallon.jpg')"
         ></v-img>
-        <h1>Sudah minum sebanyak {{consumed}} mililiter</h1>
+        <h1>Sudah minum sebanyak {{db.flowSensor}} mililiter</h1>
         <h1>Relay dalam keadaan {{relay}}</h1>
         <v-btn
           @mousedown="start"
@@ -40,33 +40,43 @@ export default {
     Logo,
     VuetifyLogo
   },
-  data() {
+  data() {    // data client
     return {
-      consumed: 60,
+      consumed: 0,
       interval:false,
       relay: 0,
       db: {
         relay: null,
+        flowSensor: null,
       }
     }
   },
-  mounted(){
+  mounted(){   // program di dalam mounted dijalankan pertama saat load web
     this.fetchDb();
   },
-  watch:{
-    relay(val){
+  watch:{     // memantau perubahan value dari relay
+    relay(val) {
+      this.refRelay.set(val)
+    },
+    consumed(val) {
       this.refRelay.set(val)
     }
   },
-  computed:{
-    refRelay(){
+  computed:{   
+    refRelay() {
       return this.$fire.database.ref().ref.child('relay')
+    },
+    refSensor() {
+      return this.$fire.database.ref().ref.child('flowSensor')
     }
   },
   methods: {
     fetchDb(){
       this.refRelay.on('value', (dataSnapshot) => {
         this.db.relay = dataSnapshot.val()
+      }),
+      this.refSensor.on('value', (dataSnapshot) => {
+        this.db.flowSensor = dataSnapshot.val()
       })
     },
   	start(){
