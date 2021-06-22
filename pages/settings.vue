@@ -6,7 +6,7 @@
       </v-col>
       <v-col cols="8">
         <v-text-field
-          :v-model="db.gallon"
+          v-model="db.gallon"
           type="number"
           min="0"
           max="19000"
@@ -21,7 +21,7 @@
       </v-col>
       <v-col cols="8">
         <v-text-field
-          :value="batasNotif"
+          v-model="batasNotif"
           type="number"
           min = "0"
           max = "19000"
@@ -56,6 +56,7 @@ export default {
     }
   },
   mounted() {
+    this.fetchDb();
     this.switchNotifikasi = false;
     this.gallon = 2000;
     this.batasNotif = 500;
