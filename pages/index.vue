@@ -11,11 +11,11 @@
           ></v-img>
           <h1 class="img-gallon-text">{{ db.gallon * 100 / 2000 }} %</h1>
         </div>
-        <h1 class="text-grey">Sisa air Galon: {{db.gallon}}</h1>
-        <h3 class="text-grey">Sudah minum sebanyak {{db.consumed}} mililiter</h3>
-        <p class="text-grey">Tekan tahan tombol <b class="text-blue">AMBIL AIR</b> untuk mengambil air</p>
-        <p>db flowSensor : {{db.flowSensor}}</p>
-        <p>nambah berapa: {{nambah}}</p>
+        <h1 class="text-grey padding-bottom">Sisa air Galon: {{db.gallon}} ml</h1>
+        <!-- <h3 class="text-grey">Sudah minum sebanyak {{db.consumed}} mililiter</h3> -->
+        <p class="text-grey">Tekan tahan tombol <b class="text-blue">AMBIL AIR</b><br> untuk mengambil air</p>
+        <!-- <p>db flowSensor : {{db.flowSensor}}</p>
+        <p>nambah berapa: {{nambah}}</p> -->
         <!-- <h1>Relay: {{relay}}</h1> -->
         <v-btn
           @mousedown="start"
@@ -25,13 +25,15 @@
           @touchend="stop"
           @touchcancel="stop"
           depressed
+          large
+          rounded
           color="primary"
         >
           Ambil Air
         </v-btn>
         <br>
 
-        db relay : {{ db.relay }}
+        <!-- db relay : {{ db.relay }} -->
       </div>
     </v-col>
   </v-row>
@@ -39,7 +41,7 @@
 
 <style>
 .index {
-  padding: 5vw
+  padding: 3vw
 }
 .img-gallon {
   position: relative;
@@ -55,6 +57,9 @@
 }
 .text-blue {
   color: #47B9FF;
+}
+.padding-bottom {
+  padding-bottom: 1vh;
 }
 </style>
 

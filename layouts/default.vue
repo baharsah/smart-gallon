@@ -8,8 +8,10 @@
       app
     >
       <div class="account">
-        <v-avatar size="40">
-          <v-img src="https://cdn.vuetifyjs.com/images/lists/2.jpg"></v-img>
+        <v-avatar color="blue">
+          <v-icon dark>
+            mdi-account-circle
+          </v-icon>
         </v-avatar>
         <h3>Nabilla M M</h3>
         <p>nmauludina@gmail.com</p>
@@ -33,12 +35,13 @@
     </v-navigation-drawer>
     <v-app-bar
       color="primary"
+      :dark="true"
       :clipped-left="clipped"
       fixed
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" color="white" />
+      <v-toolbar-title v-text="title" class="font-weight-bold" />
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -57,7 +60,7 @@
 
 <style>
 .account {
-  padding: 16px;
+  padding: 16px 0 0 16px;
 }
 </style>
 
@@ -77,7 +80,12 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Consumption',
-          to: '/inspire'
+          to: '/consumption'
+        },
+        {
+          icon: 'mdi-cog',
+          title: 'Settings',
+          to: '/settings'
         }
       ],
       miniVariant: false,
