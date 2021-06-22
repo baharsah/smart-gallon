@@ -7,7 +7,7 @@
           lazy-src="https://picsum.photos/id/11/10/6"
           max-height="150"
           max-width="250"
-          src="~/assets/gallon.jpg"
+          :src="require('~/assets/gallon.jpg')"
         ></v-img>
         <h1>Sudah minum sebanyak {{consumed}} mililiter</h1>
         <h1>Relay dalam keadaan {{relay}}</h1>
