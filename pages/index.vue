@@ -171,6 +171,10 @@ export default {
       this.flowSensor = 0
       this.relay = 0
       this.button = false
+
+      if(this.gallon <= this.refBatasNotif){
+        this.notification(`sisa air galon anda ${galon} milimeter`)
+      }
     },
 
     notification(message){
