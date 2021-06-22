@@ -89,8 +89,6 @@ export default {
         gallon: null,
         batasNotif: null,
       },
-      devMode: true,
-      intervalDev: null,
     }
   },
   mounted(){   // program di dalam mounted dijalankan pertama saat load web
@@ -154,31 +152,22 @@ export default {
         this.db.batasNotif = dataSnapshot.val()
       })
     },
-  	start(){
-      if(this.devMode){
-        let _this = this;
-        this.intervalDev = setInterval(() =>{
-          if(_this.gallon <= 1){
-            clearInterval(this.intervalDev)
-          }
-          _this.gallon -= 1
-        }, 100)
-      }
+    start(){
       this.nambah = 0
-      this.relay = 1
-      this.flowSensor = this.db.flowSensor
-      this.button = true
+    	if(!this.interval){
+      	this.interval = setInterval(() => {
+          this.relay = 1, 30
+          this.flowSensor = this.db.flowSensor, 30
+          this.button = true
+        })	
+      }
     },
-    stop() {
-      if(this.devMode){
-        clearInterval(this.intervalDev)
-      }
-      if(this.gallon <= this.db.batasNotif){
-        this.notification(`Maaf, gallon anda tersisa ${this.gallon}`);
-      }
+     stop() {
       this.nambah = this.db.flowSensor
       this.gallon -= this.nambah
       this.consumed += this.db.flowSensor
+    	clearInterval(this.interval)
+      this.interval = false
       this.flowSensor = 0
       this.relay = 0
       this.button = false
