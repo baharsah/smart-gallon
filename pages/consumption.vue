@@ -10,10 +10,10 @@
         color="primary"
       >
         <!-- <h1>{{consumed * 100 / 2000}}%</h1> -->
-        <h1>{{ db.consumed * 100 /2000 }}%</h1>
+        <h1>{{ percentConsume }}%</h1>
       </v-progress-circular>
       <h2 class="text-grey">Hari ini anda minum <span class="text-blue">{{db.consumed}} mililiter</span> air</h2>
-      <h3 class="text-grey" v-if="consumed * 100 /2000 == 100">Kebutuhan anda <span class="text-blue">sudah mencukupi</span>!</h3>
+      <h3 class="text-grey" v-if="percentConsume == 100">Kebutuhan anda <span class="text-blue">sudah mencukupi</span>!</h3>
     </v-col>
   </v-row>
 </template>
@@ -48,6 +48,9 @@ export default {
   computed:{
     refConsumed() {
       return this.$fire.database.ref().ref.child('consumed')
+    },
+    percentConsume(){
+      return this.db.consumed * 100 /2000
     }
   },
   methods: {
