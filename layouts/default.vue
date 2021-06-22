@@ -73,12 +73,12 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-home',
           title: 'Home',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-beer',
           title: 'Consumption',
           to: '/consumption'
         },

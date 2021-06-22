@@ -9,9 +9,9 @@
             contain
             :src="require('~/assets/gallon.jpg')"
           ></v-img>
-          <h1 class="img-gallon-text">{{ db.gallon * 100 / 2000 }} %</h1>
+          <h1 class="img-gallon-text">{{ db.gallon * 100 / 2000 }}%</h1>
         </div>
-        <h1 class="text-grey padding-bottom">Sisa air Galon: {{db.gallon}} ml</h1>
+        <h1 class="text-grey padding-bottom">Sisa air galon: {{db.gallon}} ml</h1>
         <!-- <h3 class="text-grey">Sudah minum sebanyak {{db.consumed}} mililiter</h3> -->
         <p class="text-grey">Tekan tahan tombol <b class="text-blue">AMBIL AIR</b><br> untuk mengambil air</p>
         <!-- <p>db flowSensor : {{db.flowSensor}}</p>
