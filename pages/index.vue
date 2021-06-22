@@ -49,7 +49,8 @@
 .img-gallon-text {
   position:absolute;
   top: 50%;
-  left: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #fff;
 }
 .text-grey {
