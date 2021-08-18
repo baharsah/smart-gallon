@@ -6,17 +6,17 @@ export default {
 
   ssr: false,
 
-  server: {     
+  server: {
     port: 8000, // default: 3000     
     host: '0.0.0.0', // default: localhost   
-  }, 
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - SmartGallon',
-    title: 'smart-gallon',
+    title: 'Smart Gallon',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'id'
     },
     meta: [
       { charset: 'utf-8' },
@@ -24,7 +24,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -67,7 +67,10 @@ export default {
           emulatorHost: 'localhost',
         }
       }
-    ]
+    ],
+    [
+      '@nuxtjs/pwa',
+    ],
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -100,5 +103,29 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  pwa: {
+    manifest: {
+      name: 'Smart Gallon',
+      short_name: 'Gallon IoT',
+      description: 'Aplikasi pengingat dan monitoring galon.',
+      display: 'standalone',
+      theme_color: '#47b9ff',
+      background_color: '#ffffff',
+      // icons: [],
+      lang: 'id',
+      start_url: '/'
+    },
+    meta: {
+      charset: 'utf-8',
+      name: 'Smart Gallon',
+      description: 'Aplikasi pengingat dan monitoring galon.',
+      theme_color: '#47b9ff',
+      author: 'Nabilla',
+      lang: 'id',
+      mobileAppIOS: 'false',
+      nativeUI: 'true',
+    }
   },
 }
