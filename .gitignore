@@ -90,3 +90,6 @@ sw.*
 *.swp
 
 OneSignal*
+
+#mine
+access-token.txt
