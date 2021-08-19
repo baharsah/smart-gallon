@@ -113,7 +113,6 @@ export default {
       display: 'standalone',
       theme_color: '#47b9ff',
       background_color: '#ffffff',
-      // icons: [],
       lang: 'id',
       start_url: '/'
     },
