@@ -9,9 +9,7 @@
     >
       <div class="account">
         <v-avatar color="blue">
-          <v-icon dark>
-            mdi-account-circle
-          </v-icon>
+          <v-icon dark> mdi-account-circle </v-icon>
         </v-avatar>
         <h3>Nabilla M M</h3>
         <p>nmauludina@gmail.com</p>
@@ -33,13 +31,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      color="primary"
-      :dark="true"
-      :clipped-left="clipped"
-      fixed
-      app
-    >
+    <v-app-bar color="primary" :dark="true" :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" class="font-weight-bold" />
       <v-spacer />
@@ -49,11 +41,8 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; Miran4 {{ new Date().getFullYear() }}</span>
+    <v-footer :absolute="!fixed" app>
+      <span>&copy; Nabilla M M {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -66,32 +55,32 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
       items: [
         {
-          icon: 'mdi-home',
-          title: 'Home',
-          to: '/'
+          icon: "mdi-home",
+          title: "Home",
+          to: "/",
         },
         {
-          icon: 'mdi-beer',
-          title: 'Consumption',
-          to: '/consumption'
+          icon: "mdi-beer",
+          title: "Consumption",
+          to: "/consumption",
         },
         {
-          icon: 'mdi-cog',
-          title: 'Settings',
-          to: '/settings'
-        }
+          icon: "mdi-cog",
+          title: "Settings",
+          to: "/settings",
+        },
       ],
       miniVariant: false,
       right: true,
-      title: 'Smart Gallon'
-    }
-  }
-}
+      title: "Smart Gallon",
+    };
+  },
+};
 </script>
