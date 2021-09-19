@@ -1,0 +1,9 @@
+FROM node:10
+WORKDIR /app
+ADD . /app/
+RUN npm i -g npm && npm i -g yarn
+RUN rm yarn.lock
+RUN yarn
+RUN yarn build
+EXPOSE 3000
+CMD [ "yarn", "start" ]
